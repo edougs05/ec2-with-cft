@@ -1,3 +1,4 @@
+# This Module will create a EC2 instance and a bucket then a VPC
 ---
 Resources:
   Ec2Instance:
@@ -16,3 +17,13 @@ Resources:
         FromPort: 22
         ToPort: 22
         CidrIp: 0.0.0.0/0
+ S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: my-nice-bucket7 
+  AccessControl: private
+ VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
